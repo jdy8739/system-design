@@ -25,5 +25,8 @@ axios의 interceptor나, tanstack-query의 cache의 생명주기 훅에 Toast를
 ```js
 import toast from "@toast";
 
-axios.beforeRequestError = (error) => openToast({ message: error.message, duration: 2000, exposeCloseButton: true, position: "top" });
+axios.interceptors.response.use(
+    (response) => response,
+    (error) => openToast({ message: error.message, duration: 2000, exposeCloseButton: true, position: "top" })
+);
 ```

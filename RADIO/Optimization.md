@@ -5,7 +5,7 @@
 
 ## 렌더링 최적화
 
-- transition translate 속성 사용해서 reflow 최소화, repaint 단계이후로만을 사용
+- transition translate 속성 사용해서 reflow 최소화, repaint 단계까지만 사용
 - setTimeout 이후 translate과 함께 opacity 사용하여 composition 단계까지 재계산
 - 그리고 z-index로 겹치는 토스트 관리
 
