@@ -11,19 +11,26 @@
 ```js
 const TOAST_QUEUE = [];
 
-const pushToToastQueue = (toastElement, { duration }) => {
-    if (toastElement.type === Toast) {
-        TOAST_QUEUE.push(toastElement);
+const pushToQueue = (config) => {
+    TOAST_QUEUE.push(config);
+};
 
-        setTimeout(() => {
-            const idx = TOAST_QUEUE.indexOf(toastElement);
-            if (idx !== -1) TOAST_QUEUE.splice(idx, 1);
-        }, duration);
-    }
-}
+const removeFromQueue = (id) => {
+    const idx = TOAST_QUEUE.findIndex(t => t.id === id);
+    if (idx !== -1) TOAST_QUEUE.splice(idx, 1);
+};
 
-const openToast = ({ duration = 3000, ...props }) => pushToToastQueue(<Toast {...props} />, { duration })
+const openToast = ({ id, duration = 3000, ...props }) => {
+    const config = { id: id ?? crypto.randomUUID(), ...props };
+
+    pushToQueue(config);
+
+    setTimeout(() => removeFromQueue(config.id), duration);
+    return config.id;
+};
 ```
+
+> 실제 렌더링은 큐를 구독하는 전용 컨테이너가 ReactDOM.createRoot 로 수행한다.
 
 ---
 
