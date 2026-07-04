@@ -16,5 +16,11 @@
 
 FSM(Finite State Machine) 기반 컴포넌트 상태 설계 연습
 
-- [Cost Calculation FSM](./rocket_FSM/Cost%20Calculation%20FSM/)
-- [Cost Review FSM](./rocket_FSM/Cost%20Review%20FSM/)
+| 분기 | 다이어그램 |
+|---|---|
+| Q1 | Cost Calculation FSM |
+| Q2 | Cost Review FSM |
+| Q3 | Freezer Tracking FSM |
+| Q4 | Component Risk FSM |
+
+→ [rocket_FSM](./rocket_FSM/)
